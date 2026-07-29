@@ -13,14 +13,13 @@ import walkie.chat.ChatGroupId
 import walkie.chat.ChatMessage
 import walkie.comm.WTCommPeerInfo
 import walkie.comm.uid
-import walkie.talkie.WTActivity
 import walkie.talkie.api.wtchat.ChatGroupIdInt
 import walkie.talkie.api.wtchat.ChatGroupType
 import walkie.talkie.api.wtchat.DiscussionAbs
 import walkie.talkie.api.wtchat.DiscussionMapAbs
 import walkie.talkie.api.wtdebug.WTDebugInt
 import walkie.talkie.api.wtmisc.WTNavigation
-import walkie.talkie.common.WTCommonData
+import walkie.talkie.common.WTDataHub
 import walkie.talkie.node.NodeId
 import walkie.talkie.ui.nav.WTNavGraph
 import walkie.util.logd
@@ -29,13 +28,13 @@ import walkie.util.randomString
 
 enum class UIMessageAction {Send, Receive}
 
-class WTViewModelFactory(private val wtHub: WTCommonData) : ViewModelProvider.Factory {
+class WTViewModelFactory(private val wtHub: WTDataHub) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return WTViewModel(wtHub) as T
     }
 }
 
-class WTViewModel (val wtHub: WTCommonData): ViewModel(), WTDebugInt {
+class WTViewModel (val wtHub: WTDataHub): ViewModel(), WTDebugInt {
     companion object {
         const val TAG = "WTViewModel"
     }

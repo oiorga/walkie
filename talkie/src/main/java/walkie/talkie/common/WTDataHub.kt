@@ -34,7 +34,7 @@ import walkie.util.randomString
 import walkie.wifidirect.WTWifiDirectManager
 import walkie.wifidirect.WiFiDirectBroadcastReceiver
 
-class WTCommonData private constructor (
+class WTDataHub private constructor (
     private val _remoteCallMux: RemoteCallMuxInt = RemoteCallMux(),
     private val _pipeMux: MessageBusInt<PipeMessageType, Any> = MessageBus(),
     private val _moduleOp: ModuleOpInt = ModuleOpImpl(_pipeMux)
@@ -44,8 +44,8 @@ class WTCommonData private constructor (
     WTDebugInt
 {
     companion object {
-        val ONE: WTCommonData by lazy(LazyThreadSafetyMode.SYNCHRONIZED) { WTCommonData() }
-        const val TAG = "WTCommonData"
+        val ONE: WTDataHub by lazy(LazyThreadSafetyMode.SYNCHRONIZED) { WTDataHub() }
+        const val TAG = "WTDataHub"
     }
 
     val tag = TAG
@@ -114,7 +114,7 @@ class WTCommonData private constructor (
     }
 }
 
-internal fun WTCommonData.updateUI(
+internal fun WTDataHub.updateUI(
     uiScreenMajor: PipeMessageType,
     uiScreenMinor: Any?
 ): Boolean {

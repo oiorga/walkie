@@ -15,7 +15,7 @@ import walkie.talkie.api.wtchat.ChatGroupType
 import walkie.talkie.api.wtdebug.WTDebugInt
 import walkie.talkie.api.wtModule.WTModOpArg
 import walkie.talkie.common.UpdateUiLiveData
-import walkie.talkie.common.WTCommonData
+import walkie.talkie.common.WTDataHub
 import walkie.talkie.globalmap.DiscussionMap
 import walkie.talkie.node.NodeId
 import walkie.talkie.playground.commSquirrelWheel
@@ -40,7 +40,7 @@ class WalkieTalkie:
     }
     val tag = TAG
 
-    val wtHub: WTCommonData = WTCommonData.ONE
+    val wtHub: WTDataHub = WTDataHub.ONE
 
     init {
         Logging.ONE.setGlobal(true)
@@ -74,7 +74,7 @@ class WalkieTalkie:
     }
 }
 
-internal fun WalkieTalkie.wtHubInit(stage: Int) : WTCommonData {
+internal fun WalkieTalkie.wtHubInit(stage: Int) : WTDataHub {
     logd(tag,"WalkieTalkie.wtHubInit called stage: $stage init")
 
     for (i in 0..<stage) {
