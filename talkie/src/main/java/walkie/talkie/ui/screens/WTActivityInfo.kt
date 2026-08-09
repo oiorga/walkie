@@ -50,6 +50,7 @@ fun WTActivity.WTInfo(modifier: Modifier = Modifier,
         "versionCode" to pInfo.longVersionCode,
         "buildTime" to getDateInstance().format(BuildConfig.BUILD_TIME),
         "gitCommit" to BuildInfo.COMMIT,
+        "gitCommitDate" to BuildInfo.COMMITDATE,
         "gitBranch" to BuildInfo.BRANCH,
         "gitRemote" to BuildInfo.REPO
     )
@@ -105,6 +106,18 @@ fun WTActivity.WTInfo(modifier: Modifier = Modifier,
                 )
                 Text(
                     text = "Commit: " + "${buildInfoMap["gitCommit"]}",
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = wtUITheme.bgColor,
+                            RoundedCornerShape(4.dp, 4.dp, 4.dp, 4.dp)
+                        ),
+                    color = wtUITheme.textColor,
+                    fontSize = wtUITheme.chatFontSize,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    text = "Commit Date: " + "${buildInfoMap["gitCommitDate"]}",
                     modifier = modifier
                         .fillMaxWidth()
                         .background(

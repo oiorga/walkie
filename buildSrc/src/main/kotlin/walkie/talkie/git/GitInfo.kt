@@ -6,6 +6,11 @@ fun Project.gitCommit(): String =
         commandLine("git", "rev-parse", "--short", "HEAD")
     }.standardOutput.asText.get().trim()
 
+fun Project.gitCommitDate(): String =
+    providers.exec {
+        commandLine("git", "show", "-s", "--format=%ci", "HEAD")
+    }.standardOutput.asText.get().trim()
+
 fun Project.gitBranch(): String =
     providers.exec {
         commandLine("git", "rev-parse", "--abbrev-ref", "HEAD")

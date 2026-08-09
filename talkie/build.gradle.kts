@@ -14,6 +14,7 @@ tasks.register("generateBuildInfo") {
     description = "generateBuildInfo"
     doLast {
         val commit = gitCommit()
+        val commitDate = gitCommitDate()
         val branch = gitBranch()
         val repo = gitRemote()
 
@@ -28,6 +29,7 @@ tasks.register("generateBuildInfo") {
             package walkie.talkie                
             object BuildInfo {
                 const val COMMIT = "$commit"
+                const val COMMITDATE = "$commitDate"
                 const val BRANCH = "$branch"
                 const val REPO = "$repo"
             }
